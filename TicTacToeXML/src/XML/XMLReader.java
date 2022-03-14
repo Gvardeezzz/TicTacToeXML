@@ -85,7 +85,7 @@ public class XMLReader {
     }
 
     public static void playSavedGame() throws InterruptedException {
-        readXML("C:\\Users\\Igor Ivanovich\\Downloads\\savedgame-1.xml");
+        readXML("savedgame-1.xml");
         int stepCount = 1;
         for (int i = 0; i < steps.size(); i++) {
             if(stepCount%2 == 1){
