@@ -2,6 +2,11 @@ import XML.XMLWriter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Controller {
     private final Model model;
     private final View view;
@@ -91,7 +96,7 @@ public class Controller {
             model.getGameStat().put(playerTwoName,s);
         }
         model.sendStatisticsToFile(model.makeOutputData(model.getGameStat()));
-        String fileName = "savedgame-" + gameCount+ ".xml";
+        String fileName = String.format("%s_vs_%s_%s.xml", playerOneName, playerTwoName, new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime()));
         XMLWriter.saveAsFile(document,fileName);
         gameCount++;
         ConsoleHelper.printMessage("Do you want to play again?");
