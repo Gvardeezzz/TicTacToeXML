@@ -91,7 +91,7 @@ public class Controller {
             model.getGameStat().put(playerTwoName,s);
         }
         model.sendStatisticsToFile(model.makeOutputData(model.getGameStat()));
-        String fileName = "/home/sergey/ProgramData/savedgame-" + gameCount+ ".xml";
+        String fileName = "C:\\Users\\Igor Ivanovich\\Downloads\\savedgame-" + gameCount+ ".xml";
         XMLWriter.saveAsFile(document,fileName);
         gameCount++;
         ConsoleHelper.printMessage("Do you want to play again?");

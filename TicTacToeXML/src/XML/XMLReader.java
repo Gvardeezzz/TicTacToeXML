@@ -68,10 +68,10 @@ public class XMLReader {
                         steps.add(step);
                     }
 
-                    else if(startElement.getName().getLocalPart().equals("GameResult")){
+                  /* else if(startElement.getName().getLocalPart().equals("GameResult")){
                         event = reader.nextEvent();
                         win = event.asCharacters().getData();
-                    }
+                    }*/
                 }
 
                 if(event.isEndElement()){
@@ -85,7 +85,7 @@ public class XMLReader {
     }
 
     public static void playSavedGame() throws InterruptedException {
-        readXML("/home/sergey/ProgramData/savedgame-1.xml");
+        readXML("C:\\Users\\Igor Ivanovich\\Downloads\\savedgame-1.xml");
         int stepCount = 1;
         for (int i = 0; i < steps.size(); i++) {
             if(stepCount%2 == 1){

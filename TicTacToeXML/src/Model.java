@@ -115,7 +115,7 @@ public class Model {
     public void sendStatisticsToFile(ArrayList<String> strings){
         try {
             String title = "|NAME      |WINS      |DRAWS     |LOSES     |\r\n";
-            FileOutputStream fileOutputStream = new FileOutputStream("/home/sergey/gamestat.txt");
+            FileOutputStream fileOutputStream = new FileOutputStream("C:\\Users\\Igor Ivanovich\\Downloads\\gamestat.txt");
             fileOutputStream.write(title.getBytes(StandardCharsets.UTF_8));
             for (int i = 0; i < strings.size(); i++) {
                 fileOutputStream.write(strings.get(i).getBytes(StandardCharsets.UTF_8));
