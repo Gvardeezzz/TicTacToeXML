@@ -7,8 +7,9 @@ import javax.xml.stream.events.Attribute;
 import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
-import java.io.FileInputStream;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class XMLReader {
     private static String[][] gameField = {{"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
@@ -85,7 +86,32 @@ public class XMLReader {
     }
 
     public static void playSavedGame() throws InterruptedException {
-        readXML("savedgame-1.xml");
+        System.out.println("Saved games:");
+        File file = new File("");
+        File path = new File(file.getAbsolutePath());
+        List<File> files = new ArrayList<>();
+        for(File f:path.listFiles()){
+            if(f.isFile() && f.getName().endsWith(".xml")) {
+                files.add(f);
+            }
+        }
+
+        for (int i = 0; i < files.size(); i++) {
+            System.out.printf("%d - %s", (i+1), files.get(i).getName());
+            System.out.println();
+        }
+        String result = null;
+        System.out.println("Enter number of game:");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        try {
+          result = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String fileName = files.get(Integer.parseInt(result)-1).getName();
+
+        readXML(fileName);
         int stepCount = 1;
         for (int i = 0; i < steps.size(); i++) {
             if(stepCount%2 == 1){
